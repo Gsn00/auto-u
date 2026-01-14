@@ -9,37 +9,14 @@ const sendButton = document.getElementById("form_button");
 const resultWaiting = document.getElementById("result_waiting");
 const resultSent = document.getElementById("result_sent");
 
-let email = "";
-
-uploadButton.addEventListener("click", () => {
-  fileInput.click();
-});
-
-fileInput.addEventListener("change", () => {
-  if (fileInput.files.length > 0) {
-    fileName.textContent = "Selecionado: " + fileInput.files[0].name;
-    disableTextarea();
-  } else {
-    fileName.textContent = "Clique para carregar o arquivo (.txt, .pdf)";
-    enableTextarea();
-  }
-});
-
-formTextarea.addEventListener("input", () => {
-  formTextarea.style.height = formTextarea.scrollHeight + "px";
-
-  if (formTextarea.value.length > 0) {
-    disableFileInput();
-  } else {
-    enableFileInput();
-  }
-});
+const clearButton = document.getElementById("form_clear");
 
 const disableFileInput = () => {
   uploadButton.disabled = true;
   uploadButton.style.opacity = 0.4;
   fileInput.disabled = true;
 };
+
 const enableFileInput = () => {
   uploadButton.disabled = false;
   uploadButton.style.opacity = 1;
@@ -51,6 +28,7 @@ const disableTextarea = () => {
   formTextarea.value = "";
   formTextarea.style.opacity = 0.4;
 };
+
 const enableTextarea = () => {
   formTextarea.disabled = false;
   formTextarea.style.opacity = 1;
@@ -74,6 +52,7 @@ const showResult = (classification, suggestion) => {
 
   suggestionTextarea.value = suggestion;
 };
+
 const hideResult = () => {
   resultWaiting.style.display = "flex";
   resultSent.style.display = "none";
@@ -112,7 +91,40 @@ const send = async () => {
   }
 };
 
+const clearForm = () => {
+  window.location.reload();
+};
+
+uploadButton.addEventListener("click", () => {
+  fileInput.click();
+});
+
+fileInput.addEventListener("change", () => {
+  if (fileInput.files.length > 0) {
+    fileName.textContent = "Selecionado: " + fileInput.files[0].name;
+    disableTextarea();
+  } else {
+    fileName.textContent = "Clique para carregar o arquivo (.txt, .pdf)";
+    enableTextarea();
+  }
+});
+
+formTextarea.addEventListener("input", () => {
+  formTextarea.style.height = formTextarea.scrollHeight + "px";
+
+  if (formTextarea.value.length > 0) {
+    disableFileInput();
+  } else {
+    enableFileInput();
+  }
+});
+
 sendButton.addEventListener("click", (event) => {
   event.preventDefault();
   send();
+});
+
+clearButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  clearForm();
 });
