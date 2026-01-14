@@ -39,15 +39,15 @@ const showResult = (classification, suggestion) => {
   resultSent.style.display = "flex";
 
   const productiveElement = document.getElementById("productive");
-  const improductiveElement = document.getElementById("improductive");
+  const unproductiveElement = document.getElementById("unproductive");
   const suggestionTextarea = document.getElementById("suggestion_textarea");
 
   if (classification === "productive") {
     productiveElement.style.display = "block";
-    improductiveElement.style.display = "none";
-  } else if (classification === "improductive") {
+    unproductiveElement.style.display = "none";
+  } else if (classification === "unproductive") {
     productiveElement.style.display = "none";
-    improductiveElement.style.display = "block";
+    unproductiveElement.style.display = "block";
   }
 
   suggestionTextarea.value = suggestion;
@@ -88,6 +88,7 @@ const send = async () => {
     }
   } catch (error) {
     alert("Erro na requisição: " + error.message);
+    console.log(error);
   }
 };
 
