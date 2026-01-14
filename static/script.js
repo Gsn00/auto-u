@@ -10,7 +10,12 @@ const resultWaiting = document.getElementById("result_waiting");
 const resultLoading = document.getElementById("result_loading");
 const resultSent = document.getElementById("result_sent");
 
+const productiveElement = document.getElementById("productive");
+const unproductiveElement = document.getElementById("unproductive");
+const suggestionTextarea = document.getElementById("suggestion_textarea");
+
 const clearButton = document.getElementById("form_clear");
+const copyButton = document.getElementById("result_copy");
 
 const disableFileInput = () => {
   uploadButton.disabled = true;
@@ -41,10 +46,6 @@ const showResult = (classification, suggestion) => {
   resultSent.style.display = "flex";
   sendButton.disabled = false;
   sendButton.style.opacity = 1;
-
-  const productiveElement = document.getElementById("productive");
-  const unproductiveElement = document.getElementById("unproductive");
-  const suggestionTextarea = document.getElementById("suggestion_textarea");
 
   if (classification === "productive") {
     productiveElement.style.display = "block";
@@ -113,6 +114,13 @@ const clearForm = () => {
   window.location.reload();
 };
 
+const copyText = () => {
+  suggestionTextarea.select();
+  suggestionTextarea.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(suggestionTextarea.value);
+  suggestionTextarea.blur();
+};
+
 uploadButton.addEventListener("click", () => {
   fileInput.click();
 });
@@ -145,4 +153,9 @@ sendButton.addEventListener("click", (event) => {
 clearButton.addEventListener("click", (event) => {
   event.preventDefault();
   clearForm();
+});
+
+copyButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  copyText();
 });
