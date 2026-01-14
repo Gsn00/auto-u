@@ -6,6 +6,9 @@ const formTextarea = document.getElementById("form_textarea");
 
 const sendButton = document.getElementById("form_button");
 
+const resultWaiting = document.getElementById("result_waiting");
+const resultSent = document.getElementById("result_sent");
+
 let email = "";
 
 uploadButton.addEventListener("click", () => {
@@ -32,28 +35,51 @@ formTextarea.addEventListener("input", () => {
   }
 });
 
-function disableFileInput() {
+const disableFileInput = () => {
   uploadButton.disabled = true;
   uploadButton.style.opacity = 0.4;
   fileInput.disabled = true;
-}
-function enableFileInput() {
+};
+const enableFileInput = () => {
   uploadButton.disabled = false;
   uploadButton.style.opacity = 1;
   fileInput.disabled = false;
-}
+};
 
-function disableTextarea() {
+const disableTextarea = () => {
   formTextarea.disabled = true;
   formTextarea.value = "";
   formTextarea.style.opacity = 0.4;
-}
-function enableTextarea() {
+};
+const enableTextarea = () => {
   formTextarea.disabled = false;
   formTextarea.style.opacity = 1;
-}
+};
 
-async function send() {
+const showResult = (classification, suggestion) => {
+  resultWaiting.style.display = "none";
+  resultSent.style.display = "flex";
+
+  const productiveElement = document.getElementById("productive");
+  const improductiveElement = document.getElementById("improductive");
+  const suggestionTextarea = document.getElementById("suggestion_textarea");
+
+  if (classification === "productive") {
+    productiveElement.style.display = "block";
+    improductiveElement.style.display = "none";
+  } else if (classification === "improductive") {
+    productiveElement.style.display = "none";
+    improductiveElement.style.display = "block";
+  }
+
+  suggestionTextarea.value = suggestion;
+};
+const hideResult = () => {
+  resultWaiting.style.display = "flex";
+  resultSent.style.display = "none";
+};
+
+const send = async () => {
   if (fileInput.files.length === 0 && formTextarea.value.trim() === "") {
     alert("Por favor, carregue um arquivo ou insira texto no campo.");
     return;
@@ -76,14 +102,15 @@ async function send() {
     const result = await response.json();
 
     if (response.ok) {
-      alert("Classificação recebida: " + result.status);
+      showResult(result.classification, result.suggestion);
     } else {
+      hideResult();
       alert("Erro na classificação: " + result.error);
     }
   } catch (error) {
     alert("Erro na requisição: " + error.message);
   }
-}
+};
 
 sendButton.addEventListener("click", (event) => {
   event.preventDefault();

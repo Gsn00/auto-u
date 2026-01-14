@@ -183,12 +183,22 @@ body {
   font-size: 14px;
 }
 
-.result_classification span {
+#productive {
   font-size: 16px;
   padding: 8px 30px;
   background-color: #cdeede;
   border-radius: 4px;
   margin-right: auto;
+  display: none;
+}
+
+#improductive {
+  font-size: 16px;
+  padding: 8px 30px;
+  background-color: #f7caca;
+  border-radius: 4px;
+  margin-right: auto;
+  display: none;
 }
 
 .result_reply {

@@ -82,7 +82,7 @@
           </header>
 
           <section class="result_content">
-            <div class="result_waiting">
+            <div class="result_waiting" id="result_waiting">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="68"
@@ -105,15 +105,19 @@
               <p class="result_text">Aguardando envio...</p>
             </div>
 
-            <div class="result_sent">
+            <div class="result_sent" id="result_sent" style="display: none">
               <div class="result_classification">
                 <h3>Classificação</h3>
-                <span>Produtivo</span>
+                <span id="productive">Produtivo</span>
+                <span id="improductive">Improdutivo</span>
               </div>
 
               <div class="result_reply">
                 <p>Sugestão de resposta automática</p>
-                <textarea name="" class="result_textarea"></textarea>
+                <textarea
+                  class="result_textarea"
+                  id="suggestion_textarea"
+                ></textarea>
                 <button class="result_copy">
                   <p>
                     <svg

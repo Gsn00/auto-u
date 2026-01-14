@@ -11,6 +11,6 @@ def classificate():
     file = request.files.get('file')
 
     if text or file:
-        return jsonify({'status': "Ok"}), 200
+        return jsonify({'classification': 'productive', 'suggestion': 'Thanks for contacting us!'}), 200
     else:
         return jsonify({'status': "Error: No input provided"}), 400
