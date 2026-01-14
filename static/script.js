@@ -7,6 +7,7 @@ const formTextarea = document.getElementById("form_textarea");
 const sendButton = document.getElementById("form_button");
 
 const resultWaiting = document.getElementById("result_waiting");
+const resultLoading = document.getElementById("result_loading");
 const resultSent = document.getElementById("result_sent");
 
 const clearButton = document.getElementById("form_clear");
@@ -36,7 +37,10 @@ const enableTextarea = () => {
 
 const showResult = (classification, suggestion) => {
   resultWaiting.style.display = "none";
+  resultLoading.style.display = "none";
   resultSent.style.display = "flex";
+  sendButton.disabled = false;
+  sendButton.style.opacity = 1;
 
   const productiveElement = document.getElementById("productive");
   const unproductiveElement = document.getElementById("unproductive");
@@ -55,7 +59,18 @@ const showResult = (classification, suggestion) => {
 
 const hideResult = () => {
   resultWaiting.style.display = "flex";
+  resultLoading.style.display = "none";
   resultSent.style.display = "none";
+  sendButton.disabled = false;
+  sendButton.style.opacity = 1;
+};
+
+const showLoading = () => {
+  resultWaiting.style.display = "none";
+  resultLoading.style.display = "flex";
+  resultSent.style.display = "none";
+  sendButton.disabled = true;
+  sendButton.style.opacity = 0.8;
 };
 
 const send = async () => {
@@ -63,6 +78,8 @@ const send = async () => {
     alert("Por favor, carregue um arquivo ou insira texto no campo.");
     return;
   }
+
+  showLoading();
 
   const formData = new FormData();
 
