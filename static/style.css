@@ -53,8 +53,8 @@ body {
   width: 100%;
   padding: 10px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 20px;
 }
 
 .form {
@@ -65,7 +65,7 @@ body {
 
 .form_header {
   width: 100%;
-  padding: 20px;
+  padding: 20px 30px;
   border-bottom: 1px solid #e3e7ed;
 }
 
@@ -75,7 +75,7 @@ body {
 }
 
 .form_content {
-  padding: 20px;
+  padding: 20px 30px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -115,7 +115,7 @@ body {
   border: 1px solid #c4c4c4;
   border-radius: 5px;
   padding: 10px;
-  font-size: 14px;
+  font-size: 16px;
   resize: vertical;
   outline: none;
 }
@@ -134,4 +134,92 @@ body {
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+
+.result {
+  background-color: white;
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+}
+
+.result_header {
+  width: 100%;
+  padding: 20px 30px;
+  border-bottom: 1px solid #e3e7ed;
+}
+
+.result_header h2 {
+  font-weight: normal;
+  color: rgb(52, 52, 52);
+}
+
+.result_waiting {
+  padding: 20px 30px;
+  text-align: center;
+  color: #888;
+  font-size: 16px;
+  display: none;
+}
+
+.result_sent {
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.result_classification {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e3e7ed;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.result_classification h3 {
+  font-size: 14px;
+}
+
+.result_classification span {
+  font-size: 16px;
+  padding: 8px 30px;
+  background-color: #cdeede;
+  border-radius: 4px;
+  margin-right: auto;
+}
+
+.result_reply {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.result_textarea {
+  width: 100%;
+  height: 150px;
+  min-height: 150px;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  resize: vertical;
+  outline: none;
+}
+
+.result_textarea:focus {
+  border-color: #362d5a;
+}
+
+.result_copy {
+  margin-left: auto;
+  padding: 10px 20px;
+  background-color: #e3e7ed;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
