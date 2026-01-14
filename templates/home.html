@@ -25,14 +25,20 @@
       </header>
 
       <main class="card_content">
-        <form action="post" class="form">
+        <form method="post" class="form">
           <header class="form_header">
             <h2>Entrada</h2>
           </header>
 
           <section class="form_content">
-            <div class="file_upload_container">
-              <input type="file" name="" id="" style="display: none" />
+            <div class="file_upload_container" id="upload_button">
+              <input
+                type="file"
+                name=""
+                accept=".txt, .pdf"
+                id="file_input"
+                style="display: none"
+              />
 
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +59,7 @@
                 <path d="M8 21h8" />
               </svg>
 
-              <p>Clique para carregar o arquivo</p>
+              <p id="file_name">Clique para carregar o arquivo (.txt, .pdf)</p>
             </div>
 
             <p class="form_textarea_text">
@@ -132,5 +138,7 @@
         </aside>
       </main>
     </section>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
   </body>
 </html>
