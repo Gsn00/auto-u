@@ -93,6 +93,7 @@ body {
   flex-direction: column;
   gap: 15px;
   align-items: center;
+  user-select: none;
 }
 
 .file_upload_container:hover {
