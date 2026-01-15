@@ -120,5 +120,5 @@ A interface do AI Email Classifier foi projetada com base nos princípios do **C
 
 ## Deploy na Nuvem
 
-Para acessar a aplicação online, o projeto foi hospedado na plataforma Render.
+Para acessar a aplicação online, o projeto foi hospedado na plataforma Render, e pode ser acessado através do link: <br>https://auto-u.onrender.com/
 
