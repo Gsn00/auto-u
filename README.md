@@ -1,4 +1,4 @@
-# Auto-U: Classificador Inteligente de E-mails com IA
+# Classificador Inteligente de E-mails com IA
 
 ## Visão Geral do Projeto
 
