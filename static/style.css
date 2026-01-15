@@ -111,6 +111,7 @@ body {
   gap: 15px;
   align-items: center;
   user-select: none;
+  text-align: center;
 }
 
 .file_upload_container:hover {
@@ -312,5 +313,33 @@ body {
 
   button {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .form_header,
+  .form_content,
+  .result_header,
+  .result_content {
+    padding: 15px 20px;
+  }
+
+  .file_upload_container {
+    padding: 30px;
+  }
+
+  .card_header {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .card_header h1 {
+    font-size: 24px;
+  }
+
+  .form_header h2,
+  .result_header h2 {
+    font-size: 20px;
   }
 }
